@@ -1,4 +1,5 @@
 import io.restassured.response.ValidatableResponse;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -31,13 +32,13 @@ public class GetOrderUserTest {
         ingredients = orderAssertions.getIngredients(createResponse1);
     }
 
-//    @AfterEach
-//    public void deleteUser() {
-//        if (accessToken != null) {
-//            ValidatableResponse validatableResponse = userClient.delete(accessToken);
-//            userAssertions.deletedSuccessfully(validatableResponse);
-//        }
-//    }
+    @AfterEach
+    public void deleteUser() {
+        if (accessToken != null) {
+            ValidatableResponse validatableResponse = userClient.delete(accessToken);
+            userAssertions.deletedSuccessfully(validatableResponse);
+        }
+    }
 
     @Test
     @DisplayName("Получение списка заказов. Пользователь авторизован")
